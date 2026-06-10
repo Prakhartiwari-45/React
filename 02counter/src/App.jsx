@@ -1,44 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from "react";
+
+import "./App.css";
 
 function App() {
+  // React state variable:
+  // counter = current value, setCounter = function to update it
+  let [counter, setCounter] = useState(0);
 
-  let [counter,setCounter]=useState(0)
-
+  // This was a normal variable example (not reactive), so it's commented out.
   // let counter=15
 
-  const addValue= ()=>{
-    
+  // Increases counter by 4 total (1 + 1 + 1 + 1)
+  const addValue = () => {
     // counter=counter+1
-    setCounter(prevCounter =>prevCounter+1)
-    setCounter(prevCounter =>prevCounter+1)
-    setCounter(prevCounter =>prevCounter+1)
-    setCounter(prevCounter =>prevCounter+1)
+    // Functional updates ensure each call gets the latest previous value.
+    setCounter((prevCounter) => {
+      const newVal=Math.min(20,prevCounter + 1);
+      console.log("Value Added", newVal);
+      return newVal;
+    });
     
-    // console.log("Value Added",counter);
-    
-  }
+  };
 
-  const removeValue= ()=>{
-    
-    counter=counter-1
-    setCounter(counter)
-    console.log("Value Removed",counter);
-    
-  }
+  // Decreases counter by 1
+  const removeValue = () => {
+    // Decrease counter by 1 but never let it go below 0
+    setCounter((prevCounter) => {
+      const newVal = Math.max(0, prevCounter - 1);
+      console.log("Value Removed", newVal);
+      return newVal;
+    });
+  };
   return (
     <>
+      {/* Main heading */}
       <h1>Chai Aur React</h1>
+      {/* Shows current counter value */}
       <h2>Counter Value:{counter}</h2>
 
-      <button onClick={addValue}>Add VAlue {counter}</button><br />
+      {/* Click to add value */}
+      <button onClick={addValue}>Add VAlue {counter}</button>
+      <br />
+      {/* Click to remove value */}
       <button onClick={removeValue}>Remove VAlue {counter}</button>
+      {/* Footer also reflects live counter state */}
       <p>Footer: {counter}</p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
