@@ -1,35 +1,59 @@
 import { useState } from "react";
 
 function App() {
-  const [color, setColor] = useState("olive")
-  
+  // Current background color for the page.
+  const [color, setColor] = useState("olive");
+
   return (
-      <div className="w-full h-screen duration-200" style={{backgroundColor: color}}>
-        <div className="fixed flex flex-wrap justify-center bottom-12 inset-x-0 px-2 py-2">
-          <div className="flex flex-wrap justify-center gap-3 shadow-lg bg-white px-3 py-2 rounded-3xl">
-            <button 
+    // Full-screen container that uses the selected color.
+    <div
+      className="w-full h-screen duration-200"
+      style={{ backgroundColor: color }}
+    >
+      {/* Button panel fixed near the bottom of the screen. */}
+      <div className="fixed flex flex-wrap justify-center bottom-12 inset-x-0 px-2 py-2">
+        <div className="flex flex-wrap justify-center gap-3 shadow-lg bg-white px-3 py-2 rounded-3xl">
+          {/* Change background to red. */}
+          {/* Red color button with red background styling. */}
+          <button
+          //we have to pass like this in onClick beacuse it accepts a function anf if we do like that
+          //onClick({setColor('red')}) we cannot pass argumnet in it and we have to so we filre a call back
             onClick={() => setColor("red")}
-            className="outline-none px-4 py-1 rounded-full text-white shadow-lg"
-            style={{backgroundColor: "red"}}>Red</button>
+            className="outline-none px-4 py-1 rounded-full text-white shadow-lg bg-red-600"
+          >
+            Red
+          </button>
 
-            <button 
-            onClick={() => setColor("Yellow")}
+          {/* Change background to yellow. */}
+          <button
+            onClick={() => setColor("yellow")}
             className="outline-none px-4 py-1 rounded-full text-white shadow-lg"
-            style={{backgroundColor: "Yellow"}}>yellow</button>
+            style={{ backgroundColor: "yellow" }}
+          >
+            Yellow
+          </button>
 
-            <button 
-            onClick={() => setColor("Green")}
+          {/* Change background to green. */}
+          <button
+            onClick={() => setColor("green")}
             className="outline-none px-4 py-1 rounded-full text-white shadow-lg"
-            style={{backgroundColor: "green"}}>Green</button>
+            style={{ backgroundColor: "green" }}
+          >
+            Green
+          </button>
 
-            <button 
-            onClick={() => setColor("Blue")}
+          {/* Change background to blue. */}
+          <button
+            onClick={() => setColor("blue")}
             className="outline-none px-4 py-1 rounded-full text-white shadow-lg"
-            style={{backgroundColor: "Blue"}}>Blue</button>
-          </div>
+            style={{ backgroundColor: "blue" }}
+          >
+            Blue
+          </button>
         </div>
       </div>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

@@ -5,20 +5,40 @@ import "./App.css";
 function App() {
   // React state variable:
   // counter = current value, setCounter = function to update it
+  
   let [counter, setCounter] = useState(0);
 
   // This was a normal variable example (not reactive), so it's commented out.
   // let counter=15
 
-  // Increases counter by 4 total (1 + 1 + 1 + 1)
+  // Increases counter by 1 with max limit of 20
   const addValue = () => {
-    // counter=counter+1
-    // Functional updates ensure each call gets the latest previous value.
+    // counter=counter+1 (old way - direct mutation, not reactive)
+    
+    // Functional updates ensure each call gets the latest previous value
+    // This safely increments counter by 1, capped at maximum value of 20
     setCounter((prevCounter) => {
-      const newVal=Math.min(20,prevCounter + 1);
+      const newVal = Math.min(20, prevCounter + 1);
       console.log("Value Added", newVal);
       return newVal;
     });
+
+    // React batches state updates: these calls won't trigger re-renders individually
+    // Instead, React combines them and updates once after the function completes
+    // However, each setCounter call below uses the OLD prevCounter value (closure)
+    // So they all increment by 1 from the same base value - only 1 increment actually applies
+    setCounter(prevCounter + 1); // These 4 don't work as expected
+    setCounter(prevCounter + 1);
+    setCounter(prevCounter + 1);
+    setCounter(prevCounter + 1);
+
+    // These are the correct way to increment multiple times
+    // Functional form ensures each update gets the result of the previous update
+    // So this will actually increment by 4 (1+1+1+1)
+    setCounter((prevCounter) => prevCounter + 1);
+    setCounter((prevCounter) => prevCounter + 1);
+    setCounter((prevCounter) => prevCounter + 1);
+    setCounter((prevCounter) => prevCounter + 1);
     
   };
 
