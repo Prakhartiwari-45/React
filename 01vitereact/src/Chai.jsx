@@ -1,7 +1,8 @@
-function Chai(){
-    return (
-        <h3>Chai is ready</h3>
-    )
+
+function Chai() {
+  return (
+    <div>Chai in React</div>
+  )
 }
 
-export default Chai;
+export default Chai
