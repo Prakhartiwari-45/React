@@ -8,7 +8,7 @@ import Home from './components/Home/Home.jsx'
 import About from './components/About/About.jsx'
 import ContactUs from './components/ContactUs/ContactUs.jsx'
 import Github, { githubInfoUser } from './components/Github/Github.jsx'
-import User from './User/User.jsx'
+import User from './components/User/User.jsx'
 
 
 /*
