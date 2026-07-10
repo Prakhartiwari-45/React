@@ -7,4 +7,6 @@
       {currency}
     </option>
   ))}
-</select>
+</select> 
+
+export default InputBox

@@ -11,7 +11,7 @@ export const ThemeCotext=createContext({
 })
 
 
-export const ThemeProvider =ThemeCotext.Provider()
+export const ThemeProvider =ThemeCotext.Provider
 
 export default function useTheme(){
     return useContext(ThemeCotext)
