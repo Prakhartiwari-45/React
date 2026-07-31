@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Outlet } from "react-router-dom";
 import { Header, Footer } from "./components";
 import authService from "./appWrite/auth";
 import { login, logout } from "./store/authSlice";
@@ -25,21 +26,21 @@ function App() {
             .finally(() => setLoading(false));
     }, [dispatch]);
 
-    // if (loading) {
-    //     return <h2>Loading...</h2>;
-    // }
+    if (loading) {
+        return <h2>Loading...</h2>;
+    }
 
-    return !loading?(
+    return (
         <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
             <div className="w-full block">
                 <Header />
                 <main>
-                    {/* <Outlet /> */}
+                    <Outlet />
                 </main>
                 <Footer />
             </div>
         </div>
-    ):null
+    );
 }
 
 export default App;
